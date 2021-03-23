@@ -1,5 +1,6 @@
 package filters;
 
+import dataaccess.UserDB;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.User;
 
 public class AuthenticationFilter implements Filter {
     
@@ -22,7 +24,7 @@ public class AuthenticationFilter implements Filter {
             throws IOException, ServletException {
 
             // code that is executed before the servlet
-            HttpServletRequest httpRequest = (HttpServletRequest)request;
+            HttpServletRequest httpRequest = (HttpServletRequest) request;
             HttpSession session = httpRequest.getSession();
             String email = (String)session.getAttribute("email");
             
@@ -33,10 +35,7 @@ public class AuthenticationFilter implements Filter {
             }
             
             chain.doFilter(request, response); // execute the servlet
-            
-            // code that is executed after the servlet
-            
-        
+
     }
 
     @Override

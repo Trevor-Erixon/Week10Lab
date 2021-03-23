@@ -40,11 +40,9 @@ public class AdminFilter implements Filter {
             UserDB userDB = new UserDB();
             User user = userDB.get(email);
                        
-            if (user.getRole().getRoleId() == '1')
+            if (user.getRole().getRoleId() == 1)
             {
-                httpResponse = (HttpServletResponse) response;
                 chain.doFilter(request, response);
-                return;
             }
             else
             {
